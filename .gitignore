@@ -1,0 +1,30 @@
+#Personal notes
+files.txt
+
+# Byte-compiled / optimized / DLL files
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Virtual environment
+venv/
+#.env
+
+# SQLite database
+*.sqlite
+*.db
+
+# Logs
+#*.log
+#logs/
+
+# Pytest cache
+.pytest_cache/
+
+# VSCode or PyCharm
+.vscode/
+.idea/
+
+# OS files
+.DS_Store
+Thumbs.db

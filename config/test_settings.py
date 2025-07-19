@@ -1,0 +1,7 @@
+# config/test_settings.py
+
+DATABASE_URL = "sqlite:///./test_task_db.sqlite"
+THRESHOLD_MINUTES = 3
+FETCH_INTERVAL_MINUTES= 1
+DEFAULT_DEADLINE_MINUTES = 1
+DEFAULT_EXTEND_DEADLINE_MINUTES = 10

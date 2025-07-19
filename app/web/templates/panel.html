@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Task Panel</title>
+</head>
+<body>
+    <h1>Task List</h1>
+    {% import 'macros.html' as macros %}
+    <table border="1" cellpadding="5">
+        <tr>
+            <th>ID</th>
+            <th>Task ID</th>
+            <th>Status</th>
+            <th>Deadline (min)</th>
+            <th>Updated At</th>
+            <th>Extend Deadline</th>
+            <th>Change Status</th>
+        </tr>
+        {% for task in tasks %}
+        <tr>
+            <td>{{ task.id }}</td>
+            <td>{{ task.task_id }}</td>
+            <td>{{ task.status }}</td>
+            <td>{{ task.deadline_minutes }}</td>
+            <td>{{ macros.localtime(task.updated_at) }}</td>
+            <td>
+                <form method="post" action="/panel/extend/{{ task.task_id }}">
+                    <input type="number" name="minutes" min="1" placeholder="New deadline" style="width: 80px;" required>
+                    <button type="submit">Extend!</button>
+                </form>
+            </td>
+            <td>
+                <form method="post" action="/panel/status/{{ task.task_id }}" style="display:inline;">
+                    <input type="hidden" name="new_status" value="In Progress">
+                    <button type="submit">In progress</button>
+                </form>
+                <form method="post" action="/panel/status/{{ task.task_id }}" style="display:inline;">
+                    <input type="hidden" name="new_status" value="Success">
+                    <button type="submit">Success</button>
+                </form>
+                <form method="post" action="/panel/status/{{ task.task_id }}" style="display:inline;">
+                    <input type="hidden" name="new_status" value="Failed">
+                    <button type="submit">Failed</button>
+                </form>
+            </td>
+
+        </tr>
+        {% endfor %}
+    </table>
+</body>
+</html>

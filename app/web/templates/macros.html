@@ -1,0 +1,3 @@
+{% macro localtime(dt) %}
+    {{ dt.astimezone().strftime("%Y-%m-%d %H:%M") }}
+{% endmacro %}
